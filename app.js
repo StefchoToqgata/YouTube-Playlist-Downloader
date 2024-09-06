@@ -11,7 +11,7 @@ function fetchVideos(playlistUrl) {
     const apiKey = "AIzaSyAf2bBskRDGUb6GdlZtD044lZlYDFSA_0Y";
     const playlistId = extractPlaylistId(playlistUrl);
 
-    fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${apiKey}')
+    fetch('DELETED_API')
     .then(response => response.json())
     .then(data => {
         displayVideos(data.items);
@@ -63,7 +63,7 @@ function displayVideos(videos) {
         });
 
         function convertAndDownload(videoId, format) {
-            const downloadUrl = `https://api.netlify.com/api/v1/badges/97475495-b2c0-46c6-a895-026b5fbc7992/deploy-status`;
+            const downloadUrl = `DELETED_API`;
             window.open(downloadUrl, '_balnk');
         }
     })
