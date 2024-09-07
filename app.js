@@ -11,7 +11,7 @@ function fetchVideos(playlistUrl) {
     const apiKey = "AIzaSyAf2bBskRDGUb6GdlZtD044lZlYDFSA_0Y";
     const playlistId = extractPlaylistId(playlistUrl);
 
-    fetch('DELETED_API')
+    fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${apiKey}')
     .then(response => response.json())
     .then(data => {
         displayVideos(data.items);
@@ -32,7 +32,7 @@ function displayVideos(videos) {
         const videoList = getElementById('video-list');
         videoList.innerHTML = '';
         videos.forEach(video => {
-            const videoId = video.snippet.resourceId.videId;
+            const videoId = video.snippet.resourceId.videoId;
             const title = video.snippet.title;
             const thumbnail = video.snippet.thumbnails.default.url;
 
@@ -47,24 +47,24 @@ function displayVideos(videos) {
             videoList.innerHTML += videoItem
         });
 
-        document.getElementById('download-selected').addEventListener('click', function() {
-            const selectedVideos = document.querySelectorAll('.video-checkbox:checked');
-            const format = document.querySelector('Input[time="format"]:checked').value;
-            
-            if (selectedVideos.length === 0) {
-                alert("Please select at least one video");
-                return;
-            }
+          document.getElementById('download-selected').addEventListener('click', function() {
+     const selectedVideos = document.querySelectorAll('.video-checkbox:checked');
+     const format = document.querySelector('input[name="format"]:checked').value;
+    
+     if (selectedVideos.length === 0) {
+         alert("Please select at least one video");
+         return;
+     }
 
-            selectedVideos.forEach(video => {
-                const videoId = video.getAttribute('data-video-id');
-                convertAndDownload(videoId, format);
-            });
-        });
+     selectedVideos.forEach(video => {
+         const videoId = video.getAttribute('data-video-id');
+         convertAndDownload(videoId, format);
+     });
+ });
 
         function convertAndDownload(videoId, format) {
-            const downloadUrl = `DELETED_API`;
-            window.open(downloadUrl, '_balnk');
+            const downloadUrl = `https://api.netlify.com/api/v1/badges/97475495-b2c0-46c6-a895-026b5fbc7992/deploy-status`;
+            window.open(downloadUrl, '_blank');
         }
     })
 }
