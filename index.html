@@ -9,18 +9,23 @@
 <body>
     <div class="container">
         <h1>YouTube Playlist Converter</h1>
+
+        
+        <div id="controls">
+            <div id="download-options" style="display: none;">
+                <h3>Select format for all:</h3>
+                <label><input type="radio" name="format" value="mp3"> MP3</label>
+                <label><input type="radio" name="format" value="mp4"> MP4</label>
+                <button id="download-selected">Download Selected</button>
+            </div>
+            <button id="select-all">Select All</button>
+        </div>
+
         <input type="text" id="playlist-url" placeholder="Enter YouTube Playlist URL">
         <button id="fetch-videos">Fetch Videos</button>
 
         <div id="video-list">
             
-        </div>
-
-        <div id="download-options" style="display: none;">
-            <h3>Select format for all:</h3>
-            <label><input type="radio" name="format" value="mp3"> MP3</label>
-            <label><input type="radio" name="format" value="mp4"> MP4</label>
-            <button id="download-selected">Download Selected</button>
         </div>
     </div>
     <script src="app.js"></script>
